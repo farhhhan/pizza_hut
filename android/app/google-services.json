@@ -1,0 +1,87 @@
+{
+  "project_info": {
+    "project_number": "109526910363",
+    "firebase_url": "https://notification-b4406-default-rtdb.firebaseio.com",
+    "project_id": "notification-b4406",
+    "storage_bucket": "notification-b4406.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109526910363:android:c05bdc14dceef63e700d3e",
+        "android_client_info": {
+          "package_name": "com.example.bmi_calculator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwxsAAAfYt01gdHmbOJpdlJjQTq9jg-nE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109526910363:android:3c03aa45d1993a6a700d3e",
+        "android_client_info": {
+          "package_name": "com.example.notifications"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwxsAAAfYt01gdHmbOJpdlJjQTq9jg-nE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109526910363:android:94f0cc4cd7f50dfc700d3e",
+        "android_client_info": {
+          "package_name": "com.example.pizza_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwxsAAAfYt01gdHmbOJpdlJjQTq9jg-nE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109526910363:android:db90245887ff19d3700d3e",
+        "android_client_info": {
+          "package_name": "com.example.pizza_hut_admin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwxsAAAfYt01gdHmbOJpdlJjQTq9jg-nE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
