@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pizza_app/auth/bloc/auth_bloc.dart';
 import 'package:pizza_app/bloc/pizzaadd_bloc.dart';
+import 'package:pizza_app/cartbloc/bloc/cart_bloc.dart';
+import 'package:pizza_app/choice/bloc/select_bloc.dart';
+import 'package:pizza_app/count/bloc/count_bloc.dart';
 import 'package:pizza_app/firebase_options.dart';
 import 'package:pizza_app/home.dart';
 import 'package:pizza_app/image/imagerepo.dart';
 import 'package:pizza_app/image/img_bloc_bloc.dart';
+import 'package:pizza_app/location/bloc/autho_complete_bloc.dart';
+import 'package:pizza_app/location/searcgRepo.dart';
 import 'package:pizza_app/userBloc/bloc/user_bloc.dart';
 import 'package:pizza_app/welocme.dart';
 
@@ -27,7 +32,11 @@ class MyApp extends StatelessWidget {
       BlocProvider(create:(context) => PizzaaddBloc()),
       BlocProvider(create:(context) => AuthBloc()),
        BlocProvider(create:(context) => UserBloc()),
-       BlocProvider(create:(context) => ImgBlocBloc(ImagePickerServices()))
+       BlocProvider(create:(context) => ImgBlocBloc(ImagePickerServices())),
+       BlocProvider(create:(context) => CountBloc()),
+       BlocProvider(create:(context) => SelectBloc()),
+       BlocProvider(create:(context) => CartBloc()),
+       BlocProvider(create:(context) => AuthoCompleteBloc(SearchRepo()))
     ], child: MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Pizza App',

@@ -1,17 +1,23 @@
 import 'dart:convert';
 // Class that will be the Model for a Task Object
 class 
-Pizza {
+CartModel {
 
-  final String id;
+ 
   String name;
   String description;
   String imageUrl;
   String cate;
   String price;
-  
-  Pizza({
-    required this.id,
+  String count;
+  String size;
+  String uid;
+  String pid;
+  CartModel({ 
+    required this.pid,
+    required this.count,
+    required this.size,
+    required this.uid,
     required this.name,
    required this.description,
    required this.imageUrl,
@@ -20,25 +26,31 @@ Pizza {
   });
 
   @override
-  String toString() => 'Pizza(id: $id, name: $name, description: $description)';
+  String toString() => 'CartModel(id: $uid, name: $name, description: $description)';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pid': id,
+      'uid': uid,
       'name': name,
       'description': description,
       'imageUrl':imageUrl,
       'category': cate,
-      'price':price
+      'price':price,
+      'count':count,
+      'size':size,
+      'pid':pid
     };
   }
 
   factory 
-  Pizza.fromMap(Map<String, dynamic> map) {
+  CartModel.fromMap(Map<String, dynamic> map) {
     return 
-    Pizza(
+    CartModel(
+      pid: map['pid'],
+      size: map['size'],
+      count: map['count'],
       imageUrl: map['imageUrl'],
-      id: map['pid'] as String,
+      uid: map['uid'] as String,
       name: map['name'] as String,
       description: map['description'] as String,
       cate: map['category'] as String,
@@ -49,5 +61,5 @@ Pizza {
   String toJson() => json.encode(toMap());
 
   factory 
-  Pizza.fromJson(String source) =>  Pizza.fromMap(json.decode(source) as Map<String, dynamic>);
+  CartModel.fromJson(String source) =>  CartModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

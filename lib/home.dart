@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pizza_app/auth/bloc/auth_bloc.dart';
 import 'package:pizza_app/bloc/pizzaadd_bloc.dart';
+import 'package:pizza_app/cart_screen.dart';
 import 'package:pizza_app/pizzalist/page.dart';
 import 'package:pizza_app/profile_edit.dart';
 import 'package:pizza_app/userBloc/bloc/user_bloc.dart';
@@ -85,7 +88,11 @@ class _HomePageState extends State<HomePage> {
                     leading: Icon(Icons.person),
                     title: Text('Profile'),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder:(context) => ProfileEditScreen(user: state.user!)));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  ProfileEditScreen(user: state.user!)));
                     },
                   ),
                   ListTile(
@@ -95,11 +102,15 @@ class _HomePageState extends State<HomePage> {
                       Navigator.pop(context);
                     },
                   ),
-                   ListTile(
+                  ListTile(
                     leading: Icon(Icons.dashboard),
                     title: Text('Filter'),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => FoodListPage(),));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => FoodListPage(),
+                          ));
                     },
                   ),
                   ListTile(
@@ -144,20 +155,76 @@ class _HomePageState extends State<HomePage> {
                       SafeArea(
                         child: Column(
                           children: [
-                            InkWell(
-                              onTap: () {
-                                _scaffoldKey.currentState?.openDrawer();
-                              },
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Image.asset(
-                                    "assets/images/menu.png",
-                                    width: 32,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    _scaffoldKey.currentState?.openDrawer();
+                                  },
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Image.asset(
+                                        "assets/images/menu.png",
+                                        width: 32,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
+                                Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: (){
+                                        Navigator.push(context,MaterialPageRoute(builder: (context) => CartScreen()));
+                                      },
+                                      child: Stack(
+                                        children: [
+                                          CircleAvatar(
+                                            maxRadius: 20,
+                                            backgroundColor: Colors.black45,
+                                          ),
+                                          SizedBox(
+                                            height: 40,
+                                            child: Image.asset('assets/images/cars.png'))
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(width: 20,),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 20),
+                                      child: BlocBuilder<UserBloc, UserState>(
+                                        builder: (context, state) {
+                                          if (state is profileSuccesState) {
+                                            return InkWell(
+                                              onTap: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            ProfileEditScreen(
+                                                                user: state
+                                                                    .user!)));
+                                              },
+                                              child: CircleAvatar(
+                                                backgroundImage: NetworkImage(
+                                                    state.user!.profile),
+                                                maxRadius: 25,
+                                              ),
+                                            );
+                                          } else {
+                                            return CircleAvatar(
+                                              backgroundColor: Colors.grey,
+                                              maxRadius: 25,
+                                            );
+                                          }
+                                        },
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
                             ),
                             const SizedBox(
                               height: 20,
@@ -210,7 +277,8 @@ class _HomePageState extends State<HomePage> {
                                             child: Transform.rotate(
                                               angle: value * 5,
                                               child: Image.network(
-                                                state.pizzaList![index].imageUrl,
+                                                state
+                                                    .pizzaList![index].imageUrl,
                                                 width: MediaQuery.of(context)
                                                     .size
                                                     .width,

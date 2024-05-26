@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pizza_app/bloc/pizzaadd_bloc.dart';
-import 'package:pizza_app/page.dart';
+import 'package:pizza_app/detialspiiza.dart';
 import 'package:pizza_app/pizzalist/filter.dart';
 import 'package:pizza_app/pizzalist/food_card.dart';
 

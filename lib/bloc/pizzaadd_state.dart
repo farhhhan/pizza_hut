@@ -15,3 +15,5 @@ class PizzaGetSucces extends PizzaaddState{
   @override
   List<Object> get props => [pizzaList!];
 }
+
+

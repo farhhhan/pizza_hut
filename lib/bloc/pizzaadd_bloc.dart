@@ -11,6 +11,7 @@ part 'pizzaadd_state.dart';
 class PizzaaddBloc extends Bloc<PizzaaddEvent, PizzaaddState> {
   PizzaaddBloc() : super(PizzaaddInitial()) {
     on<GetPizzaEvent>(_onPizzaGetSucces);
+    on<SelectedEvent>(_onSelected);
   }
 
   FutureOr<void> _onPizzaGetSucces(
@@ -19,5 +20,9 @@ class PizzaaddBloc extends Bloc<PizzaaddEvent, PizzaaddState> {
     List<Pizza> listPizza = await PizzaServiese().getPizza();
     print(listPizza.length);
     emit(PizzaGetSucces(pizzaList: listPizza));
+  }
+
+  FutureOr<void> _onSelected(SelectedEvent event, Emitter<PizzaaddState> emit) {
+    
   }
 }

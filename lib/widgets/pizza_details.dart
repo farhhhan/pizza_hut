@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_app/model/pizza_model.dart';
 import 'package:pizza_app/model/pizzamodel.dart';
 
 class PizzaDetails extends StatelessWidget {

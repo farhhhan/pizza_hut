@@ -11,14 +11,14 @@ class OrderButton extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            backgroundColor: Theme.of(context).colorScheme.secondary,
+            backgroundColor: Colors.amber,
             minimumSize: Size(MediaQuery.of(context).size.width * 0.9, 50),
             shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
+              borderRadius: BorderRadius.all(Radius.circular(10)),
             )),
         onPressed: () {},
         child: const Text(
-          'Order Now',
+          'Add to cart',
           style: TextStyle(
               color: Colors.black, fontSize: 15, fontWeight: FontWeight.w600),
         ),

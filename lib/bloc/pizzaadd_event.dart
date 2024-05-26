@@ -8,3 +8,5 @@ sealed class PizzaaddEvent extends Equatable {
 }
 
 class GetPizzaEvent extends PizzaaddEvent{}
+
+class SelectedEvent extends PizzaaddEvent{}
