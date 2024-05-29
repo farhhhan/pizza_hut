@@ -10,6 +10,7 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:pizza_app/cartbloc/bloc/cart_bloc.dart';
+import 'package:pizza_app/home.dart';
 import 'package:pizza_app/poster.dart';
 import 'package:pizza_app/userBloc/bloc/user_bloc.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -224,7 +225,8 @@ class _OrderFullScreenState extends State<OrderFullScreen> {
               onTap: () {
                    Razorpay razorpay = Razorpay();
                   var options = {
-                    'key': 'rzp_test_fJdcDyzohkOCPb',
+                    'key':'rzp_test_1DP5mmOlF5G5ag',
+                    // 'key': 'rzp_test_fJdcDyzohkOCPb',
                     'amount': 100,
                     'name': 'Pizza Hut.',
                     'description': 'Pizza Delivery',
@@ -288,6 +290,8 @@ class _OrderFullScreenState extends State<OrderFullScreen> {
     print(response.data.toString());
     showAlertDialog(
         context, "Payment Successful", "Payment ID: ${response.paymentId}");
+        
+        Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
   }
 
   void handleExternalWalletSelected(ExternalWalletResponse response) {

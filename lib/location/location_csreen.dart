@@ -9,11 +9,14 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:pizza_app/location/bloc/autho_complete_bloc.dart';
+import 'package:pizza_app/model/cartModel.dart';
 import 'package:pizza_app/order_screen.dart';
 
 class AddMapScreen extends StatefulWidget {
-  AddMapScreen({Key? key, required this.totola});
-  String totola;
+  AddMapScreen({required this.lists,Key? key, required this.totol});
+  String totol;
+  List<CartModel> lists;
+  
   @override
   State<AddMapScreen> createState() => _AddMapScreenState();
 }
@@ -72,7 +75,7 @@ class _AddMapScreenState extends State<AddMapScreen> {
                               latie: currentLatitude!,
                               long: currentLongitude!,
                               location: searchLocationcontroller.text,
-                              totalPrice: widget.totola,
+                              totalPrice: widget.totol,
                             ),
                           ),
                         );
@@ -375,7 +378,7 @@ class _AddMapScreenState extends State<AddMapScreen> {
                                                   location:
                                                       searchLocationcontroller
                                                           .text,
-                                                  totalPrice: widget.totola,
+                                                  totalPrice: widget.totol,
                                                 ),
                                               ),
                                             );

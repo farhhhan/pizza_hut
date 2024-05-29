@@ -22,7 +22,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       var cart = CartModel(
           pid: event.pid,
           count: event.count,
-          size: event.size,
+          size: '',
           uid: event.uid,
           name: event.name,
           description: event.description,

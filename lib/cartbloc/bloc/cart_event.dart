@@ -12,7 +12,7 @@ class CartAddEvent extends CartEvent{
   String imageUrl;
   String cate;
   String price;
-  String count;
+  int count;
   String size;
   String uid;
   String pid;

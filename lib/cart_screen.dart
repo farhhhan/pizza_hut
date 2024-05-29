@@ -260,7 +260,8 @@ class _CartScreenState extends State<CartScreen> {
                       InkWell(
                         onTap: () {
                           Navigator.push(context,MaterialPageRoute(builder: (context) => AddMapScreen(
-                            totola: totalPrice.toStringAsFixed(2),
+                            lists: cartState.cart,
+                            totol: totalPrice.toStringAsFixed(2),
                           )));
                         },
                         child: Container(

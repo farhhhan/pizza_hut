@@ -15,6 +15,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc() : super(UserState()) {
     on<ProfileGetEvent>(_profileget);
     on<profileEditEvent>(_profileEdit);
+
   }
 
   FutureOr<void> _profileget(ProfileGetEvent event, Emitter<UserState> emit)async {

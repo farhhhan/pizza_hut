@@ -236,7 +236,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
                               context.read<CartBloc>().add(CartAddEvent(
                                   context: context,
                                   pid: widget.foodData.id,
-                                  count: count.toString(),
+                                  count: count,
                                   size: pizzaSizes[states.i],
                                   uid: FirebaseAuth.instance.currentUser!.uid,
                                   name: widget.foodData.name,
