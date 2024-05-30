@@ -12,6 +12,7 @@ import 'package:pizza_app/image/imagerepo.dart';
 import 'package:pizza_app/image/img_bloc_bloc.dart';
 import 'package:pizza_app/location/bloc/autho_complete_bloc.dart';
 import 'package:pizza_app/location/searcgRepo.dart';
+import 'package:pizza_app/pizza_order/bloc/order_bloc.dart';
 import 'package:pizza_app/userBloc/bloc/user_bloc.dart';
 import 'package:pizza_app/welocme.dart';
 
@@ -36,7 +37,8 @@ class MyApp extends StatelessWidget {
        BlocProvider(create:(context) => CountBloc()),
        BlocProvider(create:(context) => SelectBloc()),
        BlocProvider(create:(context) => CartBloc()),
-       BlocProvider(create:(context) => AuthoCompleteBloc(SearchRepo()))
+       BlocProvider(create:(context) => AuthoCompleteBloc(SearchRepo())),
+       BlocProvider(create:(context) => OrderBloc()),
     ], child: MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Pizza App',

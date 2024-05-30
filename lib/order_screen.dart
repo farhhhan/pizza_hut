@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ffi';
 import 'dart:math' as math;
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -11,6 +12,10 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:pizza_app/cartbloc/bloc/cart_bloc.dart';
 import 'package:pizza_app/home.dart';
+import 'package:pizza_app/model/cartModel.dart';
+import 'package:pizza_app/model/orderModel.dart';
+import 'package:pizza_app/model/pizzamodel.dart';
+import 'package:pizza_app/pizza_order/bloc/order_bloc.dart';
 import 'package:pizza_app/poster.dart';
 import 'package:pizza_app/userBloc/bloc/user_bloc.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -21,7 +26,9 @@ class OrderFullScreen extends StatefulWidget {
   final double long;
   String totalPrice;
   String location;
-  OrderFullScreen({
+  List<CartModel> lists;
+   OrderFullScreen({
+    required this.lists,
     required this.totalPrice,
     required this.location,
     required this.latie,
@@ -90,9 +97,9 @@ class _OrderFullScreenState extends State<OrderFullScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double strprice = double.parse(widget.totalPrice);
+       double strprice = double.parse(widget.totalPrice);
     double total = strprice + deliveryCharge;
-
+   
     return Scaffold(
       appBar: AppBar(
         title: Text("Order Details"),
@@ -288,10 +295,22 @@ class _OrderFullScreenState extends State<OrderFullScreen> {
 
   void handlePaymentSuccessResponse(PaymentSuccessResponse response) {
     print(response.data.toString());
-    showAlertDialog(
-        context, "Payment Successful", "Payment ID: ${response.paymentId}");
-        
-        Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
+    List<Map<String, dynamic>> items_detials =
+        widget.lists.map((task) => task.toMap() as Map<String, dynamic>)
+            .toList();
+        var order=OrderModel(
+          items: items_detials,
+          uid: '',
+          uuid: FirebaseAuth.instance.currentUser!.uid,
+          locationName: widget.location,
+          latie: widget.latie,
+          longe: widget.long,
+          name:DateTime.now().millisecondsSinceEpoch.toString(),
+          count: widget.lists.length,
+          dpid:'',
+          totalprice: double.parse(widget.totalPrice)+deliveryCharge 
+        );
+        context.read<OrderBloc>().add(PizzaOrderAddEvent(orderList: order, context: context));
   }
 
   void handleExternalWalletSelected(ExternalWalletResponse response) {

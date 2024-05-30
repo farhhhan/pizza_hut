@@ -9,8 +9,6 @@ sealed class OrderState extends Equatable {
 
 final class OrderInitial extends OrderState {}
 
-class orderLoadingState extends OrderState{}
+class PizzaOrderSucces extends OrderState{}
 
-class orderSuccesState extends OrderState {
-  
-}
+class PizzaOrderLoadingState extends OrderState{}

@@ -72,6 +72,7 @@ class _AddMapScreenState extends State<AddMapScreen> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => OrderFullScreen(
+                              lists: widget.lists,
                               latie: currentLatitude!,
                               long: currentLongitude!,
                               location: searchLocationcontroller.text,
@@ -373,6 +374,7 @@ class _AddMapScreenState extends State<AddMapScreen> {
                                               MaterialPageRoute(
                                                 builder: (context) =>
                                                     OrderFullScreen(
+                                                      lists: widget.lists,
                                                   latie: currentLatitude!,
                                                   long: currentLongitude!,
                                                   location:
