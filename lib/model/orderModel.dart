@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:pizza_app/model/cartModel.dart';
-import 'package:pizza_app/model/pizzamodel.dart';
 
 // Class that will be the Model for a Task Object
 class OrderModel {
@@ -15,8 +13,10 @@ class OrderModel {
   String dpid;
  List< Map<String,dynamic>> items;
   String uuid;
+  String deliveryPrice;
 
   OrderModel({
+    required this.deliveryPrice,
     required this.uuid,
     required this.latie,
     required this.longe,
@@ -34,6 +34,7 @@ class OrderModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'd_price':deliveryPrice,
       'uid': uid,
       'uuid': uuid,
       'name': name,
@@ -49,11 +50,13 @@ class OrderModel {
       "d_longe": 0.000,
       'accepted': false,
       'd_uid': '',
+      'status':'pending'
     };
   }
 
   factory OrderModel.fromMap(Map<String, dynamic> map) {
     return OrderModel(
+      deliveryPrice: map['d_price'],
         uuid: map['u_uid'],
         latie: map['latie'],
         longe: map['longe'],

@@ -29,7 +29,6 @@ class UserProfile {
 
   Future<void> updateUser(UserModel userModel, BuildContext context) async {
     try {
-      print(userModel.toJson());
       File file = File(userModel.profile);
       if (file.existsSync()) {
         firebase_storage.Reference ref = firebase_storage

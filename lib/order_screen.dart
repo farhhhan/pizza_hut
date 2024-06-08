@@ -299,6 +299,7 @@ class _OrderFullScreenState extends State<OrderFullScreen> {
         widget.lists.map((task) => task.toMap() as Map<String, dynamic>)
             .toList();
         var order=OrderModel(
+           deliveryPrice: deliveryCharge.toString(),
           items: items_detials,
           uid: '',
           uuid: FirebaseAuth.instance.currentUser!.uid,
